@@ -65,9 +65,10 @@ export async function scrapeSources(
             },
           });
           if (!response.ok) {
-            throw new Error(
-              `Failed to fetch tweets for ${username}: ${response.status} ${response.statusText}`,
+            console.error(
+              `Failed to fetch tweets for ${username}: ${response.status} ${response.statusText}. Please check your X_API_BEARER_TOKEN in .env file.`,
             );
+            continue;
           }
           const tweets = await response.json();
 

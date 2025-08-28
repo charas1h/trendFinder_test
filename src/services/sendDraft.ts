@@ -29,9 +29,9 @@ async function sendDraftToDiscord(draft_post: string) {
 
     return `Success sending draft to Discord webhook at ${new Date().toISOString()}`;
   } catch (error) {
-    console.log('Error sending draft to Discord webhook');
+    console.error('Error sending draft to Discord webhook. Please check your DISCORD_WEBHOOK_URL in .env file.');
     console.error(error);
-    throw error;
+    return `Failed to send draft to Discord webhook: ${error}`;
   }
 }
 
@@ -61,8 +61,9 @@ async function sendDraftToSlack(draft_post: string) {
 
     return `Success sending draft to webhook at ${new Date().toISOString()}`;
   } catch (error) {
-    console.log('error sending draft to webhook');
-    console.log(error);
+    console.error('Error sending draft to Slack webhook. Please check your SLACK_WEBHOOK_URL in .env file.');
+    console.error(error);
+    return `Failed to send draft to Slack webhook: ${error}`;
   }
 }
 
