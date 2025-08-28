@@ -66,7 +66,7 @@ export async function scrapeSources(
           });
           if (!response.ok) {
             throw new Error(
-              `Failed to fetch tweets for ${username}: ${response.statusText}`,
+              `Failed to fetch tweets for ${username}: ${response.status} ${response.statusText}`,
             );
           }
           const tweets = await response.json();
